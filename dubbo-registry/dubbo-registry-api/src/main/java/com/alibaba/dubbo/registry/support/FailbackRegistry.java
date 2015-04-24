@@ -133,8 +133,8 @@ public abstract class FailbackRegistry extends AbstractRegistry {
 
             // 如果开启了启动时检测，则直接抛出异常
             boolean check = getUrl().getParameter(Constants.CHECK_KEY, true)
-                    && url.getParameter(Constants.CHECK_KEY, true)
-                    && ! Constants.CONSUMER_PROTOCOL.equals(url.getProtocol());
+                            && url.getParameter(Constants.CHECK_KEY, true)
+                            && !Constants.CONSUMER_PROTOCOL.equals(url.getProtocol());
             boolean skipFailback = t instanceof SkipFailbackWrapperException;
             if (check || skipFailback) {
                 if(skipFailback) {

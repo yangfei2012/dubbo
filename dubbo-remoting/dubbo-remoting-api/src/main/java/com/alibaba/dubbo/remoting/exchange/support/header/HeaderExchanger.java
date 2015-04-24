@@ -38,7 +38,12 @@ public class HeaderExchanger implements Exchanger {
     }
 
     public ExchangeServer bind(URL url, ExchangeHandler handler) throws RemotingException {
-        return new HeaderExchangeServer(Transporters.bind(url, new DecodeHandler(new HeaderExchangeHandler(handler))));
+        return new HeaderExchangeServer(
+                Transporters.bind(
+                        url,
+                        new DecodeHandler(new HeaderExchangeHandler(handler))
+                )
+        );
     }
 
 }

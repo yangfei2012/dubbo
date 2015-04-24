@@ -55,7 +55,7 @@ public class NettyServer extends AbstractServer implements Server {
 
     private Map<String, Channel>  channels; // <ip:port, channel>
 
-    private ServerBootstrap                 bootstrap;
+    private ServerBootstrap bootstrap;
 
     private org.jboss.netty.channel.Channel channel;
 
