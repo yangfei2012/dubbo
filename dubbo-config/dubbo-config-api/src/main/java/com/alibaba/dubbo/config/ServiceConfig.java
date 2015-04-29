@@ -483,7 +483,8 @@ public class ServiceConfig<T> extends AbstractServiceConfig {
                             logger.info("Register dubbo service " + interfaceClass.getName() + " url " + url + " to registry " + registryURL);
                         }
                         Invoker<?> invoker = proxyFactory.getInvoker(
-                                ref, (Class)interfaceClass,
+                                ref,
+                                (Class)interfaceClass,
                                 registryURL.addParameterAndEncoded(Constants.EXPORT_KEY, url.toFullString()));
 
                         Exporter<?> exporter = protocol.export(invoker);

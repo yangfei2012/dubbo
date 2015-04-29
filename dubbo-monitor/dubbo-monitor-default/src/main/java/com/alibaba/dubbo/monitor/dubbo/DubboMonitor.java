@@ -97,19 +97,19 @@ public class DubboMonitor implements Monitor {
             long maxConcurrent = numbers[9];
              
             // 发送汇总信息
-            URL url = statistics.getUrl()
-                    .addParameters(MonitorService.TIMESTAMP, timestamp,
-                            MonitorService.SUCCESS, String.valueOf(success),
-                            MonitorService.FAILURE, String.valueOf(failure), 
-                            MonitorService.INPUT, String.valueOf(input), 
-                            MonitorService.OUTPUT, String.valueOf(output),
-                            MonitorService.ELAPSED, String.valueOf(elapsed),
-                            MonitorService.CONCURRENT, String.valueOf(concurrent),
-                            MonitorService.MAX_INPUT, String.valueOf(maxInput),
-                            MonitorService.MAX_OUTPUT, String.valueOf(maxOutput),
-                            MonitorService.MAX_ELAPSED, String.valueOf(maxElapsed),
-                            MonitorService.MAX_CONCURRENT, String.valueOf(maxConcurrent)
-                            );
+            URL url = statistics.getUrl().addParameters(
+                    MonitorService.TIMESTAMP, timestamp,
+                    MonitorService.SUCCESS, String.valueOf(success),
+                    MonitorService.FAILURE, String.valueOf(failure),
+                    MonitorService.INPUT, String.valueOf(input),
+                    MonitorService.OUTPUT, String.valueOf(output),
+                    MonitorService.ELAPSED, String.valueOf(elapsed),
+                    MonitorService.CONCURRENT, String.valueOf(concurrent),
+                    MonitorService.MAX_INPUT, String.valueOf(maxInput),
+                    MonitorService.MAX_OUTPUT, String.valueOf(maxOutput),
+                    MonitorService.MAX_ELAPSED, String.valueOf(maxElapsed),
+                    MonitorService.MAX_CONCURRENT, String.valueOf(maxConcurrent)
+            );
             monitorService.collect(url);
             
             // 减掉已统计数据
@@ -179,7 +179,7 @@ public class DubboMonitor implements Monitor {
                 update[8] = current[8] > elapsed ? current[8] : elapsed;
                 update[9] = current[9] > concurrent ? current[9] : concurrent;
             }
-        } while (! reference.compareAndSet(current, update));
+        } while (!reference.compareAndSet(current, update));
     }
 
 	public List<URL> lookup(URL query) {
